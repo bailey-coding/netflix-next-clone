@@ -295,8 +295,11 @@ main {
 }
 
 .close {
-  float: right;
+  position: fixed;
+  top: 7%;
+  left: 77%;
   font-size: 2vw;
+  z-index: 3;
 }
 .close:hover,
 .close:focus {
@@ -309,9 +312,9 @@ main {
 }
 
 .modal-header-content {
-  position: relative;
-  top: -300px;
-  left: 30px;
+  position: fixed;
+  top: 40%;
+  left: 20%;
 }
 .modal-content h3 {
   padding: 2px 40px;
