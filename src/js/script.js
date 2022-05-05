@@ -48,11 +48,20 @@ const Component = {
       <li>Home</li>
       <li><a href="./my-list.html">My List</a></li>
     </ul>
+    <div class="right-side">
     <div class="search">
       <input type="search" placeholder="Titles, people, genres" id="search"/>
       <i class="fa fa-search"></i>
     </div>
-    <p>{{ username }}</p>
+
+    <div class="dropdown">
+  <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+  <div class="dropdown-content">
+  <p>{{ username }}</p>
+  <p>Log out</p>
+  </div>
+</div>
+</div>
   </header>
 
   <main id="myMain">
