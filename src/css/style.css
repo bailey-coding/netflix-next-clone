@@ -266,26 +266,39 @@ main {
 .modal-header video {
   width: 100%;
 }
+.modal-buttons {
+  position: relative;
+  left: 60px;
+  top: -150px;
+}
+.modal-play {
+  width: 93px;
+  height: 34px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+.modal-play a {
+  color: #000;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 16px;
+}
 .close {
   color: white;
   float: right;
   font-size: 28px;
+  font-weight: bold;
   position: relative;
   top: -520px;
   left: -20px;
-  border: 1px solid grey;
-  border-radius: 50%;
 }
 .close:hover,
 .close:focus {
+  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-.movieModalTitle {
-
-  max-width: 20vw;
-}
-
 .modal-body {
   padding: 2px 3rem;
 }
@@ -356,3 +369,6 @@ footer .footer-grid-item {
   display: block;
 }
 
+.movieModalTitle {
+  max-width: 932px;
+}
