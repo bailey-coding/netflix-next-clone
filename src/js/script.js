@@ -14,7 +14,6 @@ const Component = {
       itemList: ItemArray,
       userArray: [],
       username: "",
-      myList: [],
     };
   },
 
