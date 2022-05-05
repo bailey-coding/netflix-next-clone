@@ -47,27 +47,28 @@ const Component = {
         <p>{{ item.description }}</p>
         <div class="buttons">
           <button class="button play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
-          <button class="button info myBtn"><i class="fa fa-plus"></i> More Info</button>
+          <button class="button info" id="myBtn"><i class="fa fa-plus"></i> More Info</button>
           
           <!-- Modal -->
-          <div class="myModal modal">
-            <div class="modal-content">
-              <div class="modal-header">
-                <img :src="item.poster" />
-                <span class="close">x</span>
-                <button class="button play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
-              </div>
-              <div class="modal-body">
-              <h3>About: {{ item.name }}</h3>
-                <p>{{ item.description }}</p>
-              </div>
-              <div class="modal-footer">
-                <p>Release: {{ item.releaseDate }}</p>
-                <p>Genre: {{ item.genre }}</p>
-                <p>Rating: {{ item.rating }}</p>
-              </div>
+          <div id="myModal" class="modal">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <h2>Modal Header</h2>
+            </div>
+            <div class="modal-body">
+              <p>About {{ item.name }}</p>
+              <p>{{ item.description }}</p>
+            </div>
+            <div class="modal-footer">
+            <p>Coming: {{ item.releaseDate }}</p>
+            <p>Runtime: {{ item.runtime }}</p>
+            <p>Rating {{ item.rating }}</p>
             </div>
           </div>
+        
+        </div>
         </div>
       </div>
     </section>
@@ -152,20 +153,46 @@ window.addEventListener("DOMContentLoaded", () => {
     myFunction();
   };
 
-  // modal
-  let modal = document.querySelector(".myModal");
-  let btn = document.querySelector(".myBtn");
-  let span = document.querySelector(".close");
+  // // modal
+  // let modal = document.querySelector(".myModal");
+  // let btn = document.querySelector(".myBtn");
+  // let span = document.querySelector(".close");
 
-  btn.onclick = function () {
-    modal.style.display = "block";
-  };
-  span.onclick = function () {
+  // btn.onclick = function () {
+  //   modal.style.display = "block";
+  // };
+  // span.onclick = function () {
+  //   modal.style.display = "none";
+  // };
+  // window.onclick = function (event) {
+  //   if (event.target == modal) {
+  //     modal.style.display = "none";
+  //   }
+  // };
+
+  // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
     modal.style.display = "none";
-  };
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
+  }
+}
 });
