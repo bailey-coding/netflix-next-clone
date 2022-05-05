@@ -266,24 +266,6 @@ main {
 .modal-header video {
   width: 100%;
 }
-.modal-buttons {
-  position: relative;
-  left: 60px;
-  top: -150px;
-}
-.modal-play {
-  width: 93px;
-  height: 34px;
-  background-color: white;
-  border: none;
-  border-radius: 5px;
-}
-.modal-play a {
-  color: #000;
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 16px;
-}
 .close {
   color: white;
   float: right;
@@ -291,6 +273,8 @@ main {
   position: relative;
   top: -520px;
   left: -20px;
+  border: 1px solid grey;
+  border-radius: 50%;
 }
 .close:hover,
 .close:focus {
@@ -298,8 +282,7 @@ main {
   cursor: pointer;
 }
 .movieModalTitle {
-  position: relative;
-  left: 10%;
+
   max-width: 20vw;
 }
 
