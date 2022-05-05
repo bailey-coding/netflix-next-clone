@@ -65,11 +65,19 @@ const Component = {
           
           <!-- Modal -->
           <div id="myModal" class="modal">
-
           <div class="modal-content">
             <div class="modal-banner">
               <span class="close">&times;</span>
-              <h2>Modal Header</h2>
+              <video class="banner-video" autoplay muted loop>
+              <source :src="item.preview" type="video/mp4">
+              </video>
+              <div class="modal-header-content">
+              <span><img :src="item.poster" class="modalMovieTitle" :alt="item.name" /><span>
+              <div class="modal-buttons">
+              <button class="button modal-play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
+              <button class="modal-add"><i class="fa fa-plus"></i></button>
+              </div>
+              </div>
             </div>
             <h3>About {{ item.name }}</h3>
             <div class="modal-body">
