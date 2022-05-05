@@ -14,6 +14,7 @@ const Component = {
       itemList: ItemArray,
       userArray: [],
       username: "",
+      myList: [],
     };
   },
 
@@ -42,128 +43,135 @@ const Component = {
   // html template
   template: /* html */ `
 
-    <header id="myHeader">
-    <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
-    <ul class="navigation-list">
-      <li>Home</li>
-      <li><a href="./my-list.html">My List</a></li>
-    </ul>
-    <div class="right-side">
+<header id="myHeader">
+  <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
+
+  <ul class="navigation-list">
+    <li>Home</li>
+    <li><a href="./my-list.html">My List</a></li>
+  </ul>
+
+  <div class="right-side">
     <div class="search">
       <input type="search" placeholder="Titles, people, genres" id="search"/>
       <i class="fa fa-search"></i>
     </div>
-
     <div class="dropdown">
-  <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
-  <div class="dropdown-content">
-  <p>{{ username }}</p>
-  <p>Log out</p>
-  </div>
-</div>
-</div>
-  </header>
-
-  <main id="myMain">
-    <section class="banner" v-for="item in comingSoonList.slice(0, 1)">
-      <video class="bg" autoplay muted loop>
-      <source :src="item.preview" type="video/mp4">
-      </video>
-      <div class="content">
-        <img :src="item.poster" class="movieTitle" :alt="item.name" />
-        <p>{{ item.description }}</p>
-        <div class="buttons">
-          <button class="button play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
-          <button class="button info" id="myBtn"><i class="fa fa-plus"></i> More Info</button>
-          
-          <!-- Modal -->
-          <div id="myModal" class="modal">
-          <div class="modal-content">
-            <div class="modal-banner">
-              <span class="close">&times;</span>
-              <video class="banner-video" autoplay muted loop>
-              <source :src="item.preview" type="video/mp4">
-              </video>
-              <div class="modal-header-content">
-              <span><img :src="item.poster" class="modalMovieTitle" :alt="item.name" /><span>
-              <div class="modal-buttons">
-              <button class="button modal-play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
-              <button class="modal-add"><i class="fa fa-plus"></i></button>
-              </div>
-              </div>
-            </div>
-            <h3>About {{ item.name }}</h3>
-            <div class="modal-body">
-            <div class="modal-description">
-              <p>{{ item.description }}</p>
-            </div>
-            <div class="modal-meta">
-            <p>Release: {{ item.releaseDate }}</p>
-            <p>Runtime: {{ item.runtime }}</p>
-            <p>Rating: {{ item.rating }}</p>
-            </div>
-            </div>
-          </div>
-        
-        </div>
-        </div>
+      <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+      <div class="dropdown-content">
+        <p>{{ username }}</p>
+        <p>Log out</p>
       </div>
-    </section>
+    </div>
+  </div>
+</header>
 
-    <section id="content-grid">
-      <div class="container-heading">Action</div>
+<main id="myMain">
+  <section class="banner" v-for="item in comingSoonList.slice(0, 1)">
+    <video class="bg" autoplay muted loop>
+      <source :src="item.preview" type="video/mp4">
+    </video>
+    <div class="content">
+      <img :src="item.poster" class="movieTitle" :alt="item.name" />
+      <p>{{ item.description }}</p>
+      <div class="buttons">
+        <button class="button play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
+        <button class="button info" id="myBtn"><i class="fa fa-plus"></i> More Info</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-banner">
+          <span class="close">&times;</span>
+          <video class="banner-video" autoplay muted loop>
+            <source :src="item.preview" type="video/mp4">
+          </video>
+          <div class="modal-header-content">
+            <span><img :src="item.poster" class="modalMovieTitle" :alt="item.name" /><span>
+            <div class="modal-buttons">
+            <button class="button modal-play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
+            <button class="modal-add"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+    </div>
+    <h3>About {{ item.name }}</h3>
+    <div class="modal-body">
+      <div class="modal-description">
+      <p>{{ item.description }}</p>
+    </div>
+    <div class="modal-meta">
+      <p>Release: {{ item.releaseDate }}</p>
+      <p>Runtime: {{ item.runtime }}</p>
+      <p>Rating: {{ item.rating }}</p>
+    </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="content-grid">
+    <div class="container-heading">Action</div>
       <div class="container">
         <div class="box hover-button-display" v-for="item in actionList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
-          <img class="bg" :src="item.poster" />
-          <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
-        </div>
-      </div> 
-      <div class="container-heading">Comedy</div>
+        <img class="bg" :src="item.poster" />
+        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
+      </div>
+    </div>
+
+    <div class="container-heading">Comedy</div>
       <div class="container">
         <div class="box hover-button-display" v-for="item in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
-          <img class="bg" :src="item.poster" />
-          <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
-        </div>
+        <img class="bg" :src="item.poster" />
+        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
       </div>
-      <div class="container-heading">Romance</div>
+    </div>
+
+    <div class="container-heading">Romance</div>
       <div class="container">
         <div class="box hover-button-display" v-for="item in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
-          <img class="bg" :src="item.poster" />
-          <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
-        </div>
+        <img class="bg" :src="item.poster" />
+        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
       </div>
-      <div class="container-heading">Horror</div>
+    </div>
+
+    <div class="container-heading">Horror</div>
       <div class="container">
         <div class="box hover-button-display" v-for="item in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
-          <img class="bg" :src="item.poster" />
-          <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
-        </div>
+        <img class="bg" :src="item.poster" />
+        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
       </div>
-    </section>
-  </main>
-
-  <footer id="myFooter">
-    <div class="social-links">
-      <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
-      <a href="https://github.com/OliverVermeulen" class="social-link" target="_blank"><i class="fab fa-github icon" alt="GitHub"></i></a>
-      <a href="https://www.linkedin.com/in/oliver-vermeulen-311221222/" class="social-link" target="_blank"><i class="fab fa-linkedin-in icon" alt="Linkedin"></i></a>
     </div>
-    <ul class="footer-grid">
-      <li class="footer-grid-item">Audio and Subtitles</li>
-      <li class="footer-grid-item">Audio Description</li>
-      <li class="footer-grid-item">Help Centre</li>
-      <li class="footer-grid-item">Gift Cards</li>
-      <li class="footer-grid-item">Media Centre</li>
-      <li class="footer-grid-item">Investor Relations</li>
-      <li class="footer-grid-item">Jobs</li>
-      <li class="footer-grid-item">Terms of Use</li>
-      <li class="footer-grid-item">Privacy</li>
-      <li class="footer-grid-item">Legal Notices</li>
-      <li class="footer-grid-item">Cookie Preferences</li>
-      <li class="footer-grid-item">Corporate Information</li>
-    </ul>
-    <p>© 2022-2022 Viswinkel, Ltd.</p>
-  </footer>
+  </section>
+</main>
+
+<footer id="myFooter">
+  <div class="social-links">
+    <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
+    <a href="https://github.com/OliverVermeulen" class="social-link" target="_blank"><i class="fab fa-github icon" alt="GitHub"></i></a>
+    <a href="https://www.linkedin.com/in/oliver-vermeulen-311221222/" class="social-link" target="_blank"><i class="fab fa-linkedin-in icon" alt="Linkedin"></i></a>
+  </div>
+
+  <ul class="footer-grid">
+    <li class="footer-grid-item">Audio and Subtitles</li>
+    <li class="footer-grid-item">Audio Description</li>
+    <li class="footer-grid-item">Help Centre</li>
+    <li class="footer-grid-item">Gift Cards</li>
+
+    <li class="footer-grid-item">Media Centre</li>
+    <li class="footer-grid-item">Investor Relations</li>
+    <li class="footer-grid-item">Jobs</li>
+    <li class="footer-grid-item">Terms of Use</li>
+
+    <li class="footer-grid-item">Privacy</li>
+    <li class="footer-grid-item">Legal Notices</li>
+    <li class="footer-grid-item">Cookie Preferences</li>
+    <li class="footer-grid-item">Corporate Information</li>
+  </ul>
+
+  <p>© 2022-2022 Viswinkel, Ltd.</p>
+</footer>
   `,
   mounted() {
     this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));

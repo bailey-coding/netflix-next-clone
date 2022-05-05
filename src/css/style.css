@@ -378,38 +378,35 @@ footer .footer-grid-item {
 .dropdown {
   display: inline-block;
   position: relative;
-  padding-left: 15px;
-}
-.pfp {
-  width: 32px;
-}
-.pfp-button {
-  border: transparent;
-  background-color: transparent;
 }
 .dropdown-content {
   display: none;
   position: absolute;
-  width: fit-content;
+  left: -107px;
+  width: 150px;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.616);
+  border: 1px solid white;
 }
 .dropdown:hover .dropdown-content {
   display: block;
 }
 .dropdown-content p {
   display: block;
-  color: white;
   padding: 5px;
   text-decoration: none;
-  border: 1px solid grey;
 }
 .dropdown-content p:hover {
-  color: #FFFFFF;
   text-decoration: underline;
 }
-
+.pfp {
+ width: 32px;
+}
+.pfp-button {
+  background-color: transparent;
+  border: none;
+  padding-left: 10px;
+}
 .right-side {
   display: flex;
-  flex-direction: row;
 }
