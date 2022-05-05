@@ -62,11 +62,7 @@ header {
   align-items: center;
   padding: 0px 40px 0px 40px;
   z-index: 2;
-  background-image: linear-gradient(
-    rgb(0, 0, 0),
-    rgba(0, 0, 0, 0.322),
-    rgba(0, 0, 0, 0)
-  );
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0));
 }
 header .netflix-logo img {
   max-width: 115px;
@@ -192,45 +188,7 @@ main {
   color: white;
 }
 
-/* movie grid */
-#content-grid {
-  padding: 0px 40px 0px 40px;
-}
-.container-heading {
-  font-size: 1.4vw;
-  font-weight: 700;
-  padding-left: 9px;
-}
-.container {
-  display: flex;
-  margin-bottom: 45px;
-}
-.box {
-  background: transparent;
-  flex: 1 1 0px;
-  transition: transform 300ms ease 100ms;
-  border-radius: 6px;
-  padding: 5px;
-}
-.box:after {
-  display: block;
-  padding-top: 70%;
-}
-.box img {
-  width: 100%;
-  height: 100%;
-  border-radius: 6px;
-}
-.container .box:hover {
-  transform: scale(1.4);
-}
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-/* modal */
+/* coming soon movies modal */
 .modal {
   display: none;
   position: fixed;
@@ -320,7 +278,43 @@ main {
   width: 70%;
 }
 
-
+/* movie grid */
+#content-grid {
+  padding: 0px 40px 0px 40px;
+}
+.container-heading {
+  font-size: 1.4vw;
+  font-weight: 700;
+  padding-left: 9px;
+}
+.container {
+  display: flex;
+  margin-bottom: 45px;
+}
+.box {
+  background: transparent;
+  flex: 1 1 0px;
+  transition: transform 300ms ease 100ms;
+  border-radius: 6px;
+  padding: 5px;
+}
+.box:after {
+  display: block;
+  padding-top: 70%;
+}
+.box img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+.container .box:hover {
+  transform: scale(1.4);
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
 /* footer */
 footer {
