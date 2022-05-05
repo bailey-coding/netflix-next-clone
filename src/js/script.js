@@ -62,7 +62,7 @@ const Component = {
               <p>{{ item.description }}</p>
             </div>
             <div class="modal-footer">
-            <p>Coming: {{ item.releaseDate }}</p>
+            <p>Release: {{ item.releaseDate }}</p>
             <p>Runtime: {{ item.runtime }}</p>
             <p>Rating {{ item.rating }}</p>
             </div>
