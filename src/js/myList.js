@@ -1,0 +1,146 @@
+import { ItemArray } from "../classes/ItemArray.js";
+
+const { createApp } = window.Vue;
+const SIGNED_IN_KEY = "logged-in-user-storage-key";
+
+const Component = {
+  data() {
+    return {
+      itemList: ItemArray,
+      userArray: [],
+      username: "",
+    };
+  },
+
+  // signs user out
+  methods: {
+    logout() {
+      localStorage.removeItem(SIGNED_IN_KEY);
+      window.location.href = "../../index.html";
+    },
+  },
+
+  // html template
+  template: /* html */ `
+
+<header id="myHeader">
+  <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
+
+  <ul class="navigation-list">
+    <li><a href="./home.html">Home</a></li>
+    <li>My List</li>
+  </ul>
+
+
+    <div class="dropdown">
+      <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+      <div class="dropdown-content">
+        <p>{{ username }}</p>
+        <p @click="logout">Log out</p>
+      </div>
+    </div>
+</header>
+
+<main id="myMain">
+
+    <section id="content-grid">
+        <div class="container-heading">My List:</div>
+            <div class="container">
+                <div class="box hover-button-display" v-for="item in itemList.slice(4, 9)" :id="item.id" :class="item.name" :alt="item.name">
+                    <img class="bg" :src="item.poster" />
+                    <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+
+            <div class="container">
+            <div class="box hover-button-display" v-for="item in itemList.slice(4, 9)" :id="item.id" :class="item.name" :alt="item.name">
+                <img class="bg" :src="item.poster" />
+                <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+
+        <div class="container">
+        <div class="box hover-button-display" v-for="item in itemList.slice(4, 9)" :id="item.id" :class="item.name" :alt="item.name">
+            <img class="bg" :src="item.poster" />
+            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+
+    <div class="container">
+    <div class="box hover-button-display" v-for="item in itemList.slice(4, 9)" :id="item.id" :class="item.name" :alt="item.name">
+        <img class="bg" :src="item.poster" />
+        <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
+    </div>
+</div>
+        </div>
+    </section>
+
+<footer id="myFooter">
+  <div class="social-links">
+    <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
+    <a href="https://github.com/OliverVermeulen" class="social-link" target="_blank"><i class="fab fa-github icon" alt="GitHub"></i></a>
+    <a href="https://www.linkedin.com/in/oliver-vermeulen-311221222/" class="social-link" target="_blank"><i class="fab fa-linkedin-in icon" alt="Linkedin"></i></a>
+  </div>
+
+  <ul class="footer-grid">
+    <li class="footer-grid-item">Audio and Subtitles</li>
+    <li class="footer-grid-item">Audio Description</li>
+    <li class="footer-grid-item">Help Centre</li>
+    <li class="footer-grid-item">Gift Cards</li>
+
+    <li class="footer-grid-item">Media Centre</li>
+    <li class="footer-grid-item">Investor Relations</li>
+    <li class="footer-grid-item">Jobs</li>
+    <li class="footer-grid-item">Terms of Use</li>
+
+    <li class="footer-grid-item">Privacy</li>
+    <li class="footer-grid-item">Legal Notices</li>
+    <li class="footer-grid-item">Cookie Preferences</li>
+    <li class="footer-grid-item">Corporate Information</li>
+  </ul>
+
+  <p>© 2022-2022 Viswinkel, Ltd.</p>
+</footer>
+  `,
+  mounted() {
+    this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
+    this.username = this.userArray[0]._username;
+  },
+};
+
+// mounting app
+window.addEventListener("DOMContentLoaded", () => {
+  const app = createApp(Component);
+  app.mount("#app");
+  // sticky header
+  let header = document.querySelector("#myHeader");
+  let sticky = header.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+    } else {
+      header.classList.remove("sticky");
+    }
+  }
+  window.onscroll = function () {
+    myFunction();
+  };
+
+  // Get the modal
+  let modal = document.querySelector("#myModal");
+  let btn = document.querySelector("#myBtn");
+  let span = document.querySelector(".close");
+
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+});

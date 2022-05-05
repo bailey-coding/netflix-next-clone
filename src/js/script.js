@@ -1,6 +1,5 @@
 import { ItemArray } from "../classes/ItemArray.js";
 
-
 const { createApp } = window.Vue;
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
 const filterComingSoon = (value, itemList) =>
@@ -17,7 +16,7 @@ const Component = {
     };
   },
 
-  // filter function
+  // filter functions
   computed: {
     comingSoonList() {
       return filterComingSoon(true, this.itemList);
@@ -36,6 +35,14 @@ const Component = {
     },
     horrorList() {
       return filterGenre("Horror", this.itemList);
+    },
+  },
+
+  // signs user out
+  methods: {
+    logout() {
+      localStorage.removeItem(SIGNED_IN_KEY);
+      window.location.href = "../../index.html";
     },
   },
 
@@ -59,7 +66,7 @@ const Component = {
       <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
       <div class="dropdown-content">
         <p>{{ username }}</p>
-        <p>Log out</p>
+        <p @click="logout">Log out</p>
       </div>
     </div>
   </div>
@@ -183,7 +190,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const app = createApp(Component);
   app.mount("#app");
   // sticky header
-  let header = document.getElementById("myHeader");
+  let header = document.querySelector("#myHeader");
   let sticky = header.offsetTop;
 
   function myFunction() {
@@ -197,43 +204,17 @@ window.addEventListener("DOMContentLoaded", () => {
     myFunction();
   };
 
-  // // modal
-  // let modal = document.querySelector(".myModal");
-  // let btn = document.querySelector(".myBtn");
-  // let span = document.querySelector(".close");
-
-  // btn.onclick = function () {
-  //   modal.style.display = "block";
-  // };
-  // span.onclick = function () {
-  //   modal.style.display = "none";
-  // };
-  // window.onclick = function (event) {
-  //   if (event.target == modal) {
-  //     modal.style.display = "none";
-  //   }
-  // };
-
   // Get the modal
-  var modal = document.getElementById("myModal");
+  let modal = document.querySelector("#myModal");
+  let btn = document.querySelector("#myBtn");
+  let span = document.querySelector(".close");
 
-  // Get the button that opens the modal
-  var btn = document.getElementById("myBtn");
-
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks the button, open the modal
   btn.onclick = function () {
     modal.style.display = "block";
   };
-
-  // When the user clicks on <span> (x), close the modal
   span.onclick = function () {
     modal.style.display = "none";
   };
-
-  // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
