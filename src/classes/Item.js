@@ -1,6 +1,6 @@
 /* class constructor */
 export class Item {
-  constructor(id, name, genre, runtime, rating, description, releaseDate, comingSoon, poster,trailer, preview) {
+  constructor(id, name, genre, runtime, rating, description, releaseDate, comingSoon, poster, trailer, preview) {
     this.id = id;
     this.name = name;
     this.genre = genre;
