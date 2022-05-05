@@ -2,8 +2,10 @@ import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
 
-const filterComingSoon = (value, itemList) => itemList.filter((item) => item.comingSoon === value);
-const filterGenre = (key, itemList) => itemList.filter((item) => item.genre === key);
+const filterComingSoon = (value, itemList) =>
+  itemList.filter((item) => item.comingSoon === value);
+const filterGenre = (key, itemList) =>
+  itemList.filter((item) => item.genre === key);
 
 const Component = {
   data() {
@@ -14,12 +16,24 @@ const Component = {
 
   // filter function
   computed: {
-    comingSoonList() { return filterComingSoon(true, this.itemList); },
-    availableList() { return filterComingSoon(true, this.itemList); },
-    actionList() { return filterGenre("Action", this.itemList); },
-    comedyList() { return filterGenre("Comedy", this.itemList); },
-    romanceList() { return filterGenre("Romance", this.itemList); },
-    horrorList() { return filterGenre("Horror", this.itemList); },
+    comingSoonList() {
+      return filterComingSoon(true, this.itemList);
+    },
+    availableList() {
+      return filterComingSoon(true, this.itemList);
+    },
+    actionList() {
+      return filterGenre("Action", this.itemList);
+    },
+    comedyList() {
+      return filterGenre("Comedy", this.itemList);
+    },
+    romanceList() {
+      return filterGenre("Romance", this.itemList);
+    },
+    horrorList() {
+      return filterGenre("Horror", this.itemList);
+    },
   },
 
   // html template
@@ -53,18 +67,20 @@ const Component = {
           <div id="myModal" class="modal">
 
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-banner">
               <span class="close">&times;</span>
               <h2>Modal Header</h2>
             </div>
+            <h3>About {{ item.name }}</h3>
             <div class="modal-body">
-              <p>About {{ item.name }}</p>
+            <div class="modal-description">
               <p>{{ item.description }}</p>
             </div>
-            <div class="modal-footer">
+            <div class="modal-meta">
             <p>Release: {{ item.releaseDate }}</p>
             <p>Runtime: {{ item.runtime }}</p>
-            <p>Rating {{ item.rating }}</p>
+            <p>Rating: {{ item.rating }}</p>
+            </div>
             </div>
           </div>
         
@@ -171,28 +187,28 @@ window.addEventListener("DOMContentLoaded", () => {
   // };
 
   // Get the modal
-var modal = document.getElementById("myModal");
+  var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+  // When the user clicks the button, open the modal
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
     modal.style.display = "none";
-  }
-}
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 });
