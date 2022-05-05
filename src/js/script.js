@@ -2,8 +2,10 @@ import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
 
-const filterComingSoon = (value, itemList) => itemList.filter(item => item.comingSoon === value);
-const filterGenre = (key, itemList) => itemList.filter(item => item.genre === key);
+const filterComingSoon = (value, itemList) =>
+  itemList.filter((item) => item.comingSoon === value);
+const filterGenre = (key, itemList) =>
+  itemList.filter((item) => item.genre === key);
 
 const Component = {
   data() {
@@ -14,12 +16,24 @@ const Component = {
 
   // filter function
   computed: {
-    comingSoonList() { return filterComingSoon(true, this.itemList) },
-    availableList() { return filterComingSoon(true, this.itemList) },
-    actionList() { return filterGenre('Action', this.itemList) },
-    comedyList() { return filterGenre('Comedy', this.itemList) },
-    romanceList() { return filterGenre('Romance', this.itemList) },
-    horrorList() { return filterGenre('Horror', this.itemList) },
+    comingSoonList() {
+      return filterComingSoon(true, this.itemList);
+    },
+    availableList() {
+      return filterComingSoon(true, this.itemList);
+    },
+    actionList() {
+      return filterGenre("Action", this.itemList);
+    },
+    comedyList() {
+      return filterGenre("Comedy", this.itemList);
+    },
+    romanceList() {
+      return filterGenre("Romance", this.itemList);
+    },
+    horrorList() {
+      return filterGenre("Horror", this.itemList);
+    },
   },
 
   // html template
@@ -36,7 +50,6 @@ const Component = {
       <i class="fa fa-search"></i>
     </div>
   </header>
-
   <main id="myMain">
     <section class="banner" v-for="item in comingSoonList.slice(0, 1)">
       <video class="bg" autoplay muted loop>
@@ -71,7 +84,6 @@ const Component = {
         </div>
       </div>
     </section>
-
     <section id="content-grid">
       <div class="container-heading">Action</div>
       <div class="container">
@@ -80,7 +92,6 @@ const Component = {
           <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
         </div>
       </div> 
-
       <div class="container-heading">Comedy</div>
       <div class="container">
         <div class="box hover-button-display" v-for="item in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
@@ -88,7 +99,6 @@ const Component = {
           <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
         </div>
       </div>
-
       <div class="container-heading">Romance</div>
       <div class="container">
         <div class="box hover-button-display" v-for="item in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
@@ -96,7 +106,6 @@ const Component = {
           <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
         </div>
       </div>
-
       <div class="container-heading">Horror</div>
       <div class="container">
         <div class="box hover-button-display" v-for="item in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
@@ -106,7 +115,6 @@ const Component = {
       </div>
     </section>
   </main>
-
   <footer id="myFooter">
     <div class="social-links">
       <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
@@ -118,12 +126,10 @@ const Component = {
       <li class="footer-grid-item">Audio Description</li>
       <li class="footer-grid-item">Help Centre</li>
       <li class="footer-grid-item">Gift Cards</li>
-
       <li class="footer-grid-item">Media Centre</li>
       <li class="footer-grid-item">Investor Relations</li>
       <li class="footer-grid-item">Jobs</li>
       <li class="footer-grid-item">Terms of Use</li>
-
       <li class="footer-grid-item">Privacy</li>
       <li class="footer-grid-item">Legal Notices</li>
       <li class="footer-grid-item">Cookie Preferences</li>
@@ -142,16 +148,20 @@ const Component = {
 window.addEventListener("DOMContentLoaded", () => {
   const app = createApp(Component);
   app.mount("#app");
-let header = document.getElementById("myHeader");
-let sticky = header.offsetTop;
+  // sticky header
+  let header = document.getElementById("myHeader");
+  let sticky = header.offsetTop;
 
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+    } else {
+      header.classList.remove("sticky");
+    }
   }
-}
+  window.onscroll = function () {
+    myFunction();
+  };
 
   // modal
   let modal = document.querySelector(".myModal");
@@ -161,20 +171,12 @@ function myFunction() {
   btn.onclick = function () {
     modal.style.display = "block";
   };
-
   span.onclick = function () {
     modal.style.display = "none";
   };
-
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   };
-
-  // sticky header
-window.onscroll = function () {
-  myFunction();
-};
 });
-
