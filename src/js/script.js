@@ -2,10 +2,8 @@ import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
 
-const filterComingSoon = (value, itemList) =>
-  itemList.filter((item) => item.comingSoon === value);
-const filterGenre = (key, itemList) =>
-  itemList.filter((item) => item.genre === key);
+const filterComingSoon = (value, itemList) => itemList.filter((item) => item.comingSoon === value);
+const filterGenre = (key, itemList) => itemList.filter((item) => item.genre === key);
 
 const Component = {
   data() {
@@ -16,24 +14,12 @@ const Component = {
 
   // filter function
   computed: {
-    comingSoonList() {
-      return filterComingSoon(true, this.itemList);
-    },
-    availableList() {
-      return filterComingSoon(true, this.itemList);
-    },
-    actionList() {
-      return filterGenre("Action", this.itemList);
-    },
-    comedyList() {
-      return filterGenre("Comedy", this.itemList);
-    },
-    romanceList() {
-      return filterGenre("Romance", this.itemList);
-    },
-    horrorList() {
-      return filterGenre("Horror", this.itemList);
-    },
+    comingSoonList() { return filterComingSoon(true, this.itemList); },
+    availableList() { return filterComingSoon(true, this.itemList); },
+    actionList() { return filterGenre("Action", this.itemList); },
+    comedyList() { return filterGenre("Comedy", this.itemList); },
+    romanceList() { return filterGenre("Romance", this.itemList); },
+    horrorList() { return filterGenre("Horror", this.itemList); },
   },
 
   // html template
@@ -50,6 +36,7 @@ const Component = {
       <i class="fa fa-search"></i>
     </div>
   </header>
+
   <main id="myMain">
     <section class="banner" v-for="item in comingSoonList.slice(0, 1)">
       <video class="bg" autoplay muted loop>
@@ -84,6 +71,7 @@ const Component = {
         </div>
       </div>
     </section>
+
     <section id="content-grid">
       <div class="container-heading">Action</div>
       <div class="container">
@@ -115,6 +103,7 @@ const Component = {
       </div>
     </section>
   </main>
+
   <footer id="myFooter">
     <div class="social-links">
       <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
