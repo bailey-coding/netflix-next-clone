@@ -57,7 +57,7 @@ const Component = {
     <li><a href="./my-list.html">My List</a></li>
   </ul>
 
-  <div class="right-side">
+  <div class="search-and-dropdown">
     <div class="search">
       <input type="search" placeholder="Titles, people, genres" id="search"/>
       <i class="fa fa-search"></i>

@@ -67,6 +67,7 @@ header {
 header .netflix-logo img {
   max-width: 115px;
 }
+/* page navigation */
 .navigation-list {
   display: flex;
 }
@@ -90,6 +91,7 @@ header .netflix-logo img {
   color: rgb(177, 170, 170);
   transition: 0.5s;
 }
+/* search bar */
 .search {
   position: relative;
   width: 250px;
@@ -117,6 +119,42 @@ header .netflix-logo img {
   transform: rotateY(-50%);
   padding-right: 10px;
   color: white;
+}
+/* profile picture and dropdown */
+.pfp {
+ width: 32px;
+}
+.pfp-button {
+  background-color: transparent;
+  border: none;
+  padding-left: 10px;
+}
+.search-and-dropdown {
+  display: flex;
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: -107px;
+  width: 150px;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.616);
+  border: 1px solid white;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content p {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+.dropdown-content p:hover {
+  text-decoration: underline;
 }
 
 /* main */
@@ -315,42 +353,7 @@ main {
   top: 0;
   width: 100%;
 }
-
-/* footer */
-footer {
-  z-index: 2;
-  max-width: 980px;
-  margin: 10px auto;
-  padding: 0 40px;
-  color: grey;
-  font-size: 0.7vw;
-}
-
-footer .social-links {
-  display: flex;
-  margin-bottom: 0.5rem;
-}
-
-footer .social-link {
-  margin-right: 25px;
-}
-
-footer i {
-  font-size: 1.6vw;
-  color: white;
-}
-
-footer .footer-grid {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  cursor: default;
-}
-
-footer .footer-grid-item {
-  list-style-type: none;
-  padding-bottom: 16px;
-}
-
+/* hover buttons */
 .hover-button-display {
   float: left;
 }
@@ -375,38 +378,34 @@ footer .footer-grid-item {
   display: block;
 }
 
-.dropdown {
-  display: inline-block;
-  position: relative;
+/* footer */
+footer {
+  z-index: 2;
+  max-width: 980px;
+  margin: 10px auto;
+  padding: 0 40px;
+  color: grey;
+  font-size: 0.7vw;
 }
-.dropdown-content {
-  display: none;
-  position: absolute;
-  left: -107px;
-  width: 150px;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.616);
-  border: 1px solid white;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown-content p {
-  display: block;
-  padding: 5px;
-  text-decoration: none;
-}
-.dropdown-content p:hover {
-  text-decoration: underline;
-}
-.pfp {
- width: 32px;
-}
-.pfp-button {
-  background-color: transparent;
-  border: none;
-  padding-left: 10px;
-}
-.right-side {
+/* footer social links */
+footer .social-links {
   display: flex;
+  margin-bottom: 0.5rem;
+}
+footer .social-link {
+  margin-right: 25px;
+}
+footer i {
+  font-size: 1.6vw;
+  color: white;
+}
+/* footer grid */
+footer .footer-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  cursor: default;
+}
+footer .footer-grid-item {
+  list-style-type: none;
+  padding-bottom: 16px;
 }
