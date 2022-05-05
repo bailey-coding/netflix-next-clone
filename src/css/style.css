@@ -390,7 +390,7 @@ footer .footer-grid-item {
 .dropdown-content {
   display: none;
   position: absolute;
-  width: 100%;
+  width: fit-content;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.616);
 }

@@ -41,7 +41,7 @@ const Component = {
 
   // html template
   template: /* html */ `
-    <div>
+
     <header id="myHeader">
     <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
     <ul class="navigation-list">
@@ -164,7 +164,6 @@ const Component = {
     </ul>
     <p>© 2022-2022 Viswinkel, Ltd.</p>
   </footer>
-</div>
   `,
   mounted() {
     this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
