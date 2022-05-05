@@ -1,7 +1,8 @@
 import { ItemArray } from "../classes/ItemArray.js";
 
-const { createApp } = window.Vue;
 
+const { createApp } = window.Vue;
+const SIGNED_IN_KEY = "logged-in-user-storage-key";
 const filterComingSoon = (value, itemList) =>
   itemList.filter((item) => item.comingSoon === value);
 const filterGenre = (key, itemList) =>
@@ -11,6 +12,8 @@ const Component = {
   data() {
     return {
       itemList: ItemArray,
+      userArray: [],
+      username: "",
     };
   },
 
@@ -49,6 +52,7 @@ const Component = {
       <input type="search" placeholder="Titles, people, genres" id="search"/>
       <i class="fa fa-search"></i>
     </div>
+    <p>{{ username }}</p>
   </header>
 
   <main id="myMain">
@@ -154,7 +158,8 @@ const Component = {
 </div>
   `,
   mounted() {
-    console.log(ItemArray);
+    this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
+    this.username = this.userArray[0]._username;
   },
 };
 
