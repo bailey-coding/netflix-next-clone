@@ -244,24 +244,22 @@ main {
   background-color: rgba(0, 0, 0, 0.61);
   font-size: 1.2vw;
 }
-
 .modal-body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 2px 40px 10px 40px;
 }
-
 .modal-content {
   position: relative;
   background-color: #141414;
   margin: auto;
   padding: 0;
-  width: 932px;
-  animation-name: animatetop;
+  max-width: 60vw;
+  animation-name: modal-animation;
   animation-duration: 0.4s;
 }
-@keyframes animatetop {
+@keyframes modal-animation {
   from {
     opacity: 0;
   }
@@ -270,17 +268,14 @@ main {
     opacity: 1;
   }
 }
-
 .modalMovieTitle {
   max-width: 20vw;
 }
-
 .modal-play {
   width: 8vw;
   height: 2.2vw;
   background-color: white;
 }
-
 .modal-add {
   color: white;
   border: none;
@@ -293,7 +288,6 @@ main {
   font-size: 1vw;
   border: 2px solid grey;
 }
-
 .close {
   position: fixed;
   top: 7%;
@@ -310,11 +304,14 @@ main {
   width: 100%;
   height: 100%;
 }
-
 .modal-header-content {
   position: fixed;
-  top: 40%;
-  left: 20%;
+  top: 20vw;
+  left: 20vw;
+  max-width: 20vw;
+}
+.modal-buttons {
+  padding-left: 5vw;
 }
 .modal-content h3 {
   padding: 2px 40px;
@@ -322,9 +319,8 @@ main {
 .modal-description {
   width: 70%;
 }
-.modal-buttons {
-  padding-left: 40px;
-}
+
+
 
 /* footer */
 footer {
