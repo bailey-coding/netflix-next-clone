@@ -2,7 +2,6 @@ import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
-const WATCH_LIST_KEY = "watch-list-storage-key";
 const filterComingSoon = (value, itemList) =>
   itemList.filter((item) => item.comingSoon === value);
 const filterGenre = (key, itemList) =>

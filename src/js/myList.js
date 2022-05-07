@@ -2,7 +2,6 @@ import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
-const WATCH_LIST_KEY = "watch-list-storage-key";
 
 const Component = {
   data() {
@@ -10,23 +9,11 @@ const Component = {
       itemList: ItemArray,
       userArray: [],
       username: "",
-      watchListArray: [],
     };
   },
 
   // signs user out
   methods: {
-    removeFromWatchList(index) {
-      this.watchListArray = JSON.parse(
-        localStorage.getItem(WATCH_LIST_KEY)
-      );
-      this.watchListArray.splice(index, 1);
-      localStorage.setItem(
-        WATCH_LIST_KEY,
-        JSON.stringify(this.watchListArray)
-      );
-    },
-
     logout() {
       localStorage.removeItem(SIGNED_IN_KEY);
       window.location.href = "../../index.html";
@@ -59,9 +46,30 @@ const Component = {
     <section id="content-grid">
         <div class="container-heading">My List:</div>
         <div class="container">
-            <div class="box hover-button-display" v-for="(movie, index) in watchListArray">
+            <div class="box hover-button-display" v-for="item in itemList.slice(4, 9)" :id="item.id" :class="item.name" :alt="item.name">
             <img class="bg" :src="item.poster" />
-            <button type="button" class="hover-button" @click="removeFromWatchList(index)"><i class="fa fa-minus"></i></button>
+            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="box hover-button-display" v-for="item in itemList.slice(10, 15)" :id="item.id" :class="item.name" :alt="item.name">
+            <img class="bg" :src="item.poster" />
+            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="box hover-button-display" v-for="item in itemList.slice(16, 21)" :id="item.id" :class="item.name" :alt="item.name">
+            <img class="bg" :src="item.poster" />
+            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="box hover-button-display" v-for="item in itemList.slice(22, 27)" :id="item.id" :class="item.name" :alt="item.name">
+            <img class="bg" :src="item.poster" />
+            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
             </div>
         </div>
     </section>
@@ -96,13 +104,6 @@ const Component = {
   mounted() {
     this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
     this.username = this.userArray[0]._username;
-
-    if (!localStorage.getItem(WATCH_LIST_KEY)) {
-      let initArray = [];
-      localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(initArray));
-    }
-
-    this.watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
   },
 };
 
