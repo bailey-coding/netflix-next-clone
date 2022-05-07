@@ -31,7 +31,6 @@ const Component = {
     <li>My List</li>
   </ul>
 
-
     <div class="dropdown">
       <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
       <div class="dropdown-content">
@@ -47,27 +46,6 @@ const Component = {
         <div class="container-heading">My List:</div>
         <div class="container">
             <div class="box hover-button-display" v-for="item in itemList.slice(4, 9)" :id="item.id" :class="item.name" :alt="item.name">
-            <img class="bg" :src="item.poster" />
-            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="box hover-button-display" v-for="item in itemList.slice(10, 15)" :id="item.id" :class="item.name" :alt="item.name">
-            <img class="bg" :src="item.poster" />
-            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="box hover-button-display" v-for="item in itemList.slice(16, 21)" :id="item.id" :class="item.name" :alt="item.name">
-            <img class="bg" :src="item.poster" />
-            <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="box hover-button-display" v-for="item in itemList.slice(22, 27)" :id="item.id" :class="item.name" :alt="item.name">
             <img class="bg" :src="item.poster" />
             <button type="button" class="hover-button"><i class="fa fa-minus"></i></button>
             </div>

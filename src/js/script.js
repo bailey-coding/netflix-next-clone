@@ -2,6 +2,7 @@ import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
+const WATCH_LIST_KEY = "watch-list-storage-key";
 const filterComingSoon = (value, itemList) =>
   itemList.filter((item) => item.comingSoon === value);
 const filterGenre = (key, itemList) =>
@@ -13,6 +14,7 @@ const Component = {
       itemList: ItemArray,
       userArray: [],
       username: "",
+      watchList: [],
     };
   },
 
@@ -43,6 +45,26 @@ const Component = {
     logout() {
       localStorage.removeItem(SIGNED_IN_KEY);
       window.location.href = "../../index.html";
+    },
+
+    addToWatchList(index) {
+      if (!localStorage.getItem(WATCH_LIST_KEY)) {
+        let watchListArray = [];
+        watchListArray.push(this.availableList[index]);
+        localStorage.setItem(
+          WATCH_LIST_KEY,
+          JSON.stringify(watchListArray)
+        );
+      } else {
+        let watchListArray = JSON.parse(
+          localStorage.getItem(WATCH_LIST_KEY)
+        );
+        watchListArray.push(this.availableList[index]);
+        localStorage.setItem(
+          WATCH_LIST_KEY,
+          JSON.stringify(watchListArray)
+        );
+      }
     },
   },
 
@@ -130,7 +152,7 @@ const Component = {
       <div class="container">
         <div class="box hover-button-display" v-for="item in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
@@ -138,7 +160,7 @@ const Component = {
       <div class="container">
         <div class="box hover-button-display" v-for="item in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
@@ -146,7 +168,7 @@ const Component = {
       <div class="container">
         <div class="box hover-button-display" v-for="item in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
       </div>
     </div>
   </section>
