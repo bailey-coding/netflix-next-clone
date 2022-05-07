@@ -1,20 +1,20 @@
+import { ItemArray } from "../classes/ItemArray.js";
+
+const { createApp } = window.Vue;
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
-const WATCH_LIST_KEY = "watch-list-key";
+const WATCH_LIST_KEY = "watch-list-storage-key";
 
-
-const {createApp} = window.Vue
-
-const component = {
-
+const Component = {
   data() {
     return {
+      itemList: ItemArray,
       userArray: [],
       username: "",
-      search: "",
       watchListArray: [],
     };
   },
 
+  // signs user out
   methods: {
     removeFromWatchList(index) {
       this.watchListArray = JSON.parse(
@@ -33,6 +33,66 @@ const component = {
     },
   },
 
+  // html template
+  template: /* html */ `
+
+<header id="myHeader">
+  <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
+
+  <ul class="navigation-list">
+    <li><a href="./home.html">Home</a></li>
+    <li>My List</li>
+  </ul>
+
+
+    <div class="dropdown">
+      <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+      <div class="dropdown-content">
+        <p>{{ username }}</p>
+        <p @click="logout">Log out</p>
+      </div>
+    </div>
+</header>
+
+<main id="myMain">
+
+    <section id="content-grid">
+        <div class="container-heading">My List:</div>
+        <div class="container">
+            <div class="box hover-button-display" v-for="(movie, index) in watchListArray">
+            <img class="bg" :src="item.poster" />
+            <button type="button" class="hover-button" @click="removeFromWatchList(index)"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+    </section>
+
+<footer id="myFooter">
+  <div class="social-links">
+    <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
+    <a href="https://github.com/OliverVermeulen" class="social-link" target="_blank"><i class="fab fa-github icon" alt="GitHub"></i></a>
+    <a href="https://www.linkedin.com/in/oliver-vermeulen-311221222/" class="social-link" target="_blank"><i class="fab fa-linkedin-in icon" alt="Linkedin"></i></a>
+  </div>
+
+  <ul class="footer-grid">
+    <li class="footer-grid-item">Audio and Subtitles</li>
+    <li class="footer-grid-item">Audio Description</li>
+    <li class="footer-grid-item">Help Centre</li>
+    <li class="footer-grid-item">Gift Cards</li>
+
+    <li class="footer-grid-item">Media Centre</li>
+    <li class="footer-grid-item">Investor Relations</li>
+    <li class="footer-grid-item">Jobs</li>
+    <li class="footer-grid-item">Terms of Use</li>
+
+    <li class="footer-grid-item">Privacy</li>
+    <li class="footer-grid-item">Legal Notices</li>
+    <li class="footer-grid-item">Cookie Preferences</li>
+    <li class="footer-grid-item">Corporate Information</li>
+  </ul>
+
+  <p>© 2022-2022 Viswinkel, Ltd.</p>
+</footer>
+  `,
   mounted() {
     this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
     this.username = this.userArray[0]._username;
@@ -44,58 +104,24 @@ const component = {
 
     this.watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
   },
+};
 
+// mounting app
+window.addEventListener("DOMContentLoaded", () => {
+  const app = createApp(Component);
+  app.mount("#app");
+  // sticky header
+  let header = document.querySelector("#myHeader");
+  let sticky = header.offsetTop;
 
-  template: /* html */
-  `
-    <header id="myHeader">
-  <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
-
-  <ul class="navigation-list">
-    <li><a href="./home.html">Home</a></li>
-    <li>My List</li>
-  </ul>
-
-    <div class="dropdown">
-      <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
-      <div class="dropdown-content">
-        <p>{{ username }}</p>
-        <p @click="logout">Log out</p>
-      </div>
-    </div>
-</header>
-
-<section class="main">
-  <h1 class="list-heading">My List</h1>
-
-  <ul class="movie-list">
-    <li class="movie-item" v-for="(movie, index) in watchListArray" :key="movie.id"> 
-      <span class="movie-name">{{ movie.name }}</span>
-      <br/>
-      <img class="movie-img" v-bind:src="movie.thumbnail">
-      <br/>
-      <span class="movie-info">{{ movie.genre }}</span>
-      <br/>
-      <span class="movie-info">{{ movie.availDate }}</span>
-      <br/>
-      
-      <div class="buttons">
-        <button class="preview-btn">
-        <a :href="movie.preview">
-        <img class="preview-icon" src="/src/images/preview-icon.png"/>
-        </a>
-        </button>
-        <button class="remove-btn" @click="removeFromWatchList(index)">
-        <img class="remove-icon" src="/src/images/cancel-icon.png">
-        </button>
-        </div>   
-    </li>
-  </ul>
-</section>
-  `,
-}
-
-window.addEventListener('DOMContentLoaded',  () => {
-    const app = createApp(component)
-    app.mount("#app")
-} )
+  function myFunction() {
+    if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+    } else {
+      header.classList.remove("sticky");
+    }
+  }
+  window.onscroll = function () {
+    myFunction();
+  };
+});
