@@ -24,14 +24,9 @@ const Component = {
     },
 
     removeFromWatchList(index) {
-      this.watchListArray = JSON.parse(
-        localStorage.getItem(MY_LIST_KEY)
-      );
+      this.watchListArray = JSON.parse(localStorage.getItem(MY_LIST_KEY));
       this.watchListArray.splice(index, 1);
-      localStorage.setItem(
-        MY_LIST_KEY,
-        JSON.stringify(this.watchListArray)
-      );
+      localStorage.setItem(MY_LIST_KEY, JSON.stringify(this.watchListArray));
     },
   },
 
@@ -77,12 +72,10 @@ const Component = {
     <li class="footer-grid-item">Audio Description</li>
     <li class="footer-grid-item">Help Centre</li>
     <li class="footer-grid-item">Gift Cards</li>
-
     <li class="footer-grid-item">Media Centre</li>
     <li class="footer-grid-item">Investor Relations</li>
     <li class="footer-grid-item">Jobs</li>
     <li class="footer-grid-item">Terms of Use</li>
-
     <li class="footer-grid-item">Privacy</li>
     <li class="footer-grid-item">Legal Notices</li>
     <li class="footer-grid-item">Cookie Preferences</li>
@@ -95,12 +88,10 @@ const Component = {
   mounted() {
     this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
     this.username = this.userArray[0]._username;
-
     if (!localStorage.getItem(MY_LIST_KEY)) {
       let initArray = [];
       localStorage.setItem(MY_LIST_KEY, JSON.stringify(initArray));
     }
-
     this.watchListArray = JSON.parse(localStorage.getItem(MY_LIST_KEY));
   },
 };
