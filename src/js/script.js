@@ -56,6 +56,7 @@ const Component = {
     },
 
     addToWatchList(item) {
+<<<<<<< HEAD
       console.log(item);
       if (!localStorage.getItem(WATCH_LIST_KEY)) {
         let watchListArray = [];
@@ -64,6 +65,15 @@ const Component = {
       } else {
         let watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
         watchListArray.push(this.availableList[item]);
+=======
+      if (!localStorage.getItem(WATCH_LIST_KEY)) {
+        let watchListArray = [];
+        watchListArray.push(item);
+        localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
+      } else {
+        let watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
+        watchListArray.push(item);
+>>>>>>> cd3613c21a83b184d10f99c2041ce93d8f1e3266
         localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
       }
     },
@@ -142,34 +152,48 @@ const Component = {
 
   <section id="content-grid">
     <div class="container-heading">Action</div>
-      <div class="container">
-        <div class="box hover-button-display" v-for="item in actionList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+    <div class="container">
+      <div class="box hover-button-display" v-for="(item, index) in actionList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(actionList[index])"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
     <div class="container-heading">Comedy</div>
       <div class="container">
+<<<<<<< HEAD
         <div class="box hover-button-display" v-for="item in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
         <button type="button" class="hover-button" @click="addToWatchList(item)"><i class="fa fa-plus"></i></button>
+=======
+        <div class="box hover-button-display" v-for="(item, index) in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+          <img class="bg" :src="item.poster" />
+          <button type="button" class="hover-button" @click="addToWatchList(comedyList[index])"><i class="fa fa-plus"></i></button>
+        </div>
+>>>>>>> cd3613c21a83b184d10f99c2041ce93d8f1e3266
       </div>
-    </div>
 
     <div class="container-heading">Romance</div>
-      <div class="container">
-        <div class="box hover-button-display" v-for="item in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+    <div class="container">
+      <div class="box hover-button-display" v-for="(item, index) in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
+<<<<<<< HEAD
         <button type="button" class="hover-button" @click="addToWatchList(item)"><i class="fa fa-plus"></i></button>
+=======
+        <button type="button" class="hover-button" @click="addToWatchList(romanceList[index])"><i class="fa fa-plus"></i></button>
+>>>>>>> cd3613c21a83b184d10f99c2041ce93d8f1e3266
       </div>
     </div>
 
     <div class="container-heading">Horror</div>
-      <div class="container">
-        <div class="box hover-button-display" v-for="item in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+    <div class="container">
+      <div class="box hover-button-display" v-for="(item, index) in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
+<<<<<<< HEAD
         <button type="button" class="hover-button" @click="addToWatchList(item)"><i class="fa fa-plus"></i></button>
+=======
+        <button type="button" class="hover-button" @click="addToWatchList(horrorList[index])"><i class="fa fa-plus"></i></button>
+>>>>>>> cd3613c21a83b184d10f99c2041ce93d8f1e3266
       </div>
     </div>
   </section>
