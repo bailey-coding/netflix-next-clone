@@ -4,7 +4,7 @@ const { createApp } = window.Vue;
 
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
 
-const WATCH_LIST_KEY = "watch-list-storage-key";
+const MY_LIST_KEY = "watch-list-storage-key";
 
 const filterComingSoon = (value, itemList) =>
   itemList.filter((item) => item.comingSoon === value);
@@ -56,14 +56,14 @@ const Component = {
     },
 
     addToWatchList(item) {
-      if (!localStorage.getItem(WATCH_LIST_KEY)) {
+      if (!localStorage.getItem(MY_LIST_KEY)) {
         let watchListArray = [];
         watchListArray.push(item);
-        localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
+        localStorage.setItem(MY_LIST_KEY, JSON.stringify(watchListArray));
       } else {
-        let watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
+        let watchListArray = JSON.parse(localStorage.getItem(MY_LIST_KEY));
         watchListArray.push(item);
-        localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
+        localStorage.setItem(MY_LIST_KEY, JSON.stringify(watchListArray));
       }
     },
   },

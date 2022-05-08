@@ -2,7 +2,7 @@ import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
-const WATCH_LIST_KEY = "watch-list-storage-key";
+const MY_LIST_KEY = "watch-list-storage-key";
 
 const Component = {
   data() {
@@ -23,11 +23,11 @@ const Component = {
 
     removeFromWatchList(index) {
       this.watchListArray = JSON.parse(
-        localStorage.getItem(WATCH_LIST_KEY)
+        localStorage.getItem(MY_LIST_KEY)
       );
       this.watchListArray.splice(index, 1);
       localStorage.setItem(
-        WATCH_LIST_KEY,
+        MY_LIST_KEY,
         JSON.stringify(this.watchListArray)
       );
     },
@@ -96,12 +96,12 @@ const Component = {
     this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
     this.username = this.userArray[0]._username;
 
-    if (!localStorage.getItem(WATCH_LIST_KEY)) {
+    if (!localStorage.getItem(MY_LIST_KEY)) {
       let initArray = [];
-      localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(initArray));
+      localStorage.setItem(MY_LIST_KEY, JSON.stringify(initArray));
     }
 
-    this.watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
+    this.watchListArray = JSON.parse(localStorage.getItem(MY_LIST_KEY));
   },
 };
 
