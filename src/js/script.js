@@ -1,10 +1,14 @@
 import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
+
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
+
 const WATCH_LIST_KEY = "watch-list-storage-key";
+
 const filterComingSoon = (value, itemList) =>
   itemList.filter((item) => item.comingSoon === value);
+
 const filterGenre = (key, itemList) =>
   itemList.filter((item) => item.genre === key);
 
@@ -24,7 +28,7 @@ const Component = {
       return filterComingSoon(true, this.itemList);
     },
     availableList() {
-      return filterComingSoon(true, this.itemList);
+      return filterComingSoon(false, this.itemList);
     },
     actionList() {
       return filterGenre("Action", this.itemList);
@@ -48,26 +52,18 @@ const Component = {
     },
 
     myListBtn() {
-      window.location.href = "../pages/my-list.html";
+      window.location.href = "../pages/watch-list-page.html";
     },
 
     addToWatchList(index) {
       if (!localStorage.getItem(WATCH_LIST_KEY)) {
         let watchListArray = [];
         watchListArray.push(this.availableList[index]);
-        localStorage.setItem(
-          WATCH_LIST_KEY,
-          JSON.stringify(watchListArray)
-        );
+        localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
       } else {
-        let watchListArray = JSON.parse(
-          localStorage.getItem(WATCH_LIST_KEY)
-        );
+        let watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
         watchListArray.push(this.availableList[index]);
-        localStorage.setItem(
-          WATCH_LIST_KEY,
-          JSON.stringify(watchListArray)
-        );
+        localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
       }
     },
   },
