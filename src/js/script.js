@@ -55,14 +55,15 @@ const Component = {
       window.location.href = "../pages/watch-list-page.html";
     },
 
-    addToWatchList(index) {
+    addToWatchList(item) {
+      console.log(item);
       if (!localStorage.getItem(WATCH_LIST_KEY)) {
         let watchListArray = [];
-        watchListArray.push(this.availableList[index]);
+        watchListArray.push(this.availableList[item]);
         localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
       } else {
         let watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
-        watchListArray.push(this.availableList[index]);
+        watchListArray.push(this.availableList[item]);
         localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
       }
     },
@@ -115,7 +116,7 @@ const Component = {
             <source :src="item.preview" type="video/mp4">
           </video>
           <div class="modal-header-content">
-            <span><img :src="item.poster" class="modalMovieTitle" :alt="item.name" /><span>
+            <span><img :src="item.poster" class="modalMovieTitle" :alt="item.name" /></span>
             <div class="modal-buttons">
             <button class="button modal-play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
             <button class="modal-add"><i class="fa fa-plus"></i></button>
@@ -152,7 +153,7 @@ const Component = {
       <div class="container">
         <div class="box hover-button-display" v-for="item in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(item)"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
@@ -160,7 +161,7 @@ const Component = {
       <div class="container">
         <div class="box hover-button-display" v-for="item in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(item)"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
@@ -168,7 +169,7 @@ const Component = {
       <div class="container">
         <div class="box hover-button-display" v-for="item in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(item)"><i class="fa fa-plus"></i></button>
       </div>
     </div>
   </section>
