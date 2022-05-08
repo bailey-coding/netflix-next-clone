@@ -47,6 +47,10 @@ const Component = {
       window.location.href = "../../index.html";
     },
 
+    myListBtn() {
+      window.location.href = "../pages/my-list.html";
+    },
+
     addToWatchList(index) {
       if (!localStorage.getItem(WATCH_LIST_KEY)) {
         let watchListArray = [];
