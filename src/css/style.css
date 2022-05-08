@@ -64,7 +64,18 @@ header {
   z-index: 2;
   background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0));
 }
-header .netflix-logo img {
+/* My List header */
+#myHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px 0px 40px;
+  z-index: 2;
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0));
+}
+ .netflix-logo img {
   max-width: 115px;
 }
 /* page navigation */
@@ -347,6 +358,14 @@ main {
 }
 .container .box:hover {
   transform: scale(1.4);
+}
+.container .box:hover:nth-child(1) {
+  position: relative;
+  left: 55px;
+}
+.container .box:hover:nth-child(6) {
+  position: relative;
+  left: -55px;
 }
 .sticky {
   position: fixed;

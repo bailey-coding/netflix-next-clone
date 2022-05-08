@@ -2,6 +2,7 @@
 const form = document.querySelector("#signInform");
 const inputUsername = document.querySelector("#username");
 const inputPassword = document.querySelector("#password");
+
 // local storage key and user array
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
 let userArray = [];
