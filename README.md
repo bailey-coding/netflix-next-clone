@@ -21,8 +21,11 @@ The aim of this project is to use VUE to make a functional clone of Netflix
 
 
 ## Backlog
-- Add search bar
-- Add My List
+- Add search bar (completed)
+- Add movie grid (completed)
+- Add coming soon bar (completed)
+- Add banner (completed)
+- Add My List (completed)
 
 ## Links
 

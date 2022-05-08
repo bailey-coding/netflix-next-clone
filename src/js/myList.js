@@ -32,58 +32,58 @@ const Component = {
 
   // html template
   template: /* html */ `
-<header id="myHeader">
-  <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
+    <header id="myHeader">
+      <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
 
-  <ul class="navigation-list">
-    <li><a href="./home.html">Home</a></li>
-    <li>My List</li>
-  </ul>
+      <ul class="navigation-list">
+        <li><a href="./home.html">Home</a></li>
+        <li>My List</li>
+      </ul>
 
-  <div class="dropdown">
-    <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
-    <div class="dropdown-content">
-      <p>{{ username }}</p>
-      <p @click="logout">Log out</p>
-    </div>
-  </div>
-</header>
-
-<main id="myMain">
-  <section id="content-grid">
-    <div class="container-heading">My List:</div>
-      <div class="container">
-      <div class="box hover-button-display" v-for="item in watchListArray">
-        <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button" @click="removeFromWatchList(index)"><i class="fa fa-minus"></i></button>
+      <div class="dropdown">
+        <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+        <div class="dropdown-content">
+          <p>{{ username }}</p>
+          <p @click="logout">Log out</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-<footer id="myFooter">
-  <div class="social-links">
-    <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
-    <a href="https://github.com/OliverVermeulen" class="social-link" target="_blank"><i class="fab fa-github icon" alt="GitHub"></i></a>
-    <a href="https://www.linkedin.com/in/oliver-vermeulen-311221222/" class="social-link" target="_blank"><i class="fab fa-linkedin-in icon" alt="Linkedin"></i></a>
-  </div>
+    <main id="myMain">
+      <section id="content-grid">
+        <div class="container-heading">My List:</div>
+          <div class="container">
+          <div class="box hover-button-display" v-for="item in watchListArray">
+            <img class="bg" :src="item.poster" />
+            <button type="button" class="hover-button" @click="removeFromWatchList(index)"><i class="fa fa-minus"></i></button>
+          </div>
+        </div>
+      </section>
 
-  <ul class="footer-grid">
-    <li class="footer-grid-item">Audio and Subtitles</li>
-    <li class="footer-grid-item">Audio Description</li>
-    <li class="footer-grid-item">Help Centre</li>
-    <li class="footer-grid-item">Gift Cards</li>
-    <li class="footer-grid-item">Media Centre</li>
-    <li class="footer-grid-item">Investor Relations</li>
-    <li class="footer-grid-item">Jobs</li>
-    <li class="footer-grid-item">Terms of Use</li>
-    <li class="footer-grid-item">Privacy</li>
-    <li class="footer-grid-item">Legal Notices</li>
-    <li class="footer-grid-item">Cookie Preferences</li>
-    <li class="footer-grid-item">Corporate Information</li>
-  </ul>
+    <footer id="myFooter">
+      <div class="social-links">
+        <a href="https://www.instagram.com/oliver.vermeulen/" class="social-link" target="_blank"><i class="fab fa-instagram icon" alt="Instagram"></i></a>
+        <a href="https://github.com/OliverVermeulen" class="social-link" target="_blank"><i class="fab fa-github icon" alt="GitHub"></i></a>
+        <a href="https://www.linkedin.com/in/oliver-vermeulen-311221222/" class="social-link" target="_blank"><i class="fab fa-linkedin-in icon" alt="Linkedin"></i></a>
+      </div>
 
-  <p>© 2022-2022 Viswinkel, Ltd.</p>
-</footer>
+      <ul class="footer-grid">
+        <li class="footer-grid-item">Audio and Subtitles</li>
+        <li class="footer-grid-item">Audio Description</li>
+        <li class="footer-grid-item">Help Centre</li>
+        <li class="footer-grid-item">Gift Cards</li>
+        <li class="footer-grid-item">Media Centre</li>
+        <li class="footer-grid-item">Investor Relations</li>
+        <li class="footer-grid-item">Jobs</li>
+        <li class="footer-grid-item">Terms of Use</li>
+        <li class="footer-grid-item">Privacy</li>
+        <li class="footer-grid-item">Legal Notices</li>
+        <li class="footer-grid-item">Cookie Preferences</li>
+        <li class="footer-grid-item">Corporate Information</li>
+      </ul>
+
+      <p>© 2022-2022 Viswinkel, Ltd.</p>
+    </footer>
   `,
   mounted() {
     this.userArray = JSON.parse(localStorage.getItem(SIGNED_IN_KEY));
