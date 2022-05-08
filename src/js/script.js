@@ -55,14 +55,14 @@ const Component = {
       window.location.href = "../pages/watch-list-page.html";
     },
 
-    addToWatchList(index) {
+    addToWatchList(item) {
       if (!localStorage.getItem(WATCH_LIST_KEY)) {
         let watchListArray = [];
-        watchListArray.push(this.availableList[index]);
+        watchListArray.push(item);
         localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
       } else {
         let watchListArray = JSON.parse(localStorage.getItem(WATCH_LIST_KEY));
-        watchListArray.push(this.availableList[index]);
+        watchListArray.push(item);
         localStorage.setItem(WATCH_LIST_KEY, JSON.stringify(watchListArray));
       }
     },
@@ -115,7 +115,7 @@ const Component = {
             <source :src="item.preview" type="video/mp4">
           </video>
           <div class="modal-header-content">
-            <span><img :src="item.poster" class="modalMovieTitle" :alt="item.name" /><span>
+            <span><img :src="item.poster" class="modalMovieTitle" :alt="item.name" /></span>
             <div class="modal-buttons">
             <button class="button modal-play"><a :href="item.trailer" target="_blank"><i class="fa fa-play"></i> Play</a></button>
             <button class="modal-add"><i class="fa fa-plus"></i></button>
@@ -141,34 +141,34 @@ const Component = {
 
   <section id="content-grid">
     <div class="container-heading">Action</div>
-      <div class="container">
-        <div class="box hover-button-display" v-for="item in actionList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+    <div class="container">
+      <div class="box hover-button-display" v-for="(item, index) in actionList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(actionList[index])"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
     <div class="container-heading">Comedy</div>
       <div class="container">
-        <div class="box hover-button-display" v-for="item in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
-        <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
+        <div class="box hover-button-display" v-for="(item, index) in comedyList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+          <img class="bg" :src="item.poster" />
+          <button type="button" class="hover-button" @click="addToWatchList(comedyList[index])"><i class="fa fa-plus"></i></button>
+        </div>
       </div>
-    </div>
 
     <div class="container-heading">Romance</div>
-      <div class="container">
-        <div class="box hover-button-display" v-for="item in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+    <div class="container">
+      <div class="box hover-button-display" v-for="(item, index) in romanceList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(romanceList[index])"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
     <div class="container-heading">Horror</div>
-      <div class="container">
-        <div class="box hover-button-display" v-for="item in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
+    <div class="container">
+      <div class="box hover-button-display" v-for="(item, index) in horrorList.slice(0, 6)" :id="item.id" :class="item.name" :alt="item.name">
         <img class="bg" :src="item.poster" />
-        <button type="button" class="hover-button" @click="addToWatchList(index)"><i class="fa fa-plus"></i></button>
+        <button type="button" class="hover-button" @click="addToWatchList(horrorList[index])"><i class="fa fa-plus"></i></button>
       </div>
     </div>
   </section>
