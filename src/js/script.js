@@ -4,7 +4,7 @@ const { createApp } = window.Vue;
 
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
 
-const MY_LIST_KEY = "watch-list-storage-key";
+const MY_LIST_KEY = "my-list-storage-key";
 
 const filterComingSoon = (value, itemList) =>
   itemList.filter((item) => item.comingSoon === value);

@@ -1,8 +1,10 @@
 import { ItemArray } from "../classes/ItemArray.js";
 
 const { createApp } = window.Vue;
+
 const SIGNED_IN_KEY = "logged-in-user-storage-key";
-const MY_LIST_KEY = "watch-list-storage-key";
+
+const MY_LIST_KEY = "my-list-storage-key";
 
 const Component = {
   data() {
@@ -35,7 +37,6 @@ const Component = {
 
   // html template
   template: /* html */ `
-
 <header id="myHeader">
   <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
 
@@ -44,26 +45,25 @@ const Component = {
     <li>My List</li>
   </ul>
 
-    <div class="dropdown">
-      <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
-      <div class="dropdown-content">
-        <p>{{ username }}</p>
-        <p @click="logout">Log out</p>
-      </div>
+  <div class="dropdown">
+    <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+    <div class="dropdown-content">
+      <p>{{ username }}</p>
+      <p @click="logout">Log out</p>
     </div>
+  </div>
 </header>
 
 <main id="myMain">
-
-    <section id="content-grid">
-        <div class="container-heading">My List:</div>
-        <div class="container">
-            <div class="box hover-button-display" v-for="item in watchListArray">
-            <img class="bg" :src="item.poster" />
-            <button type="button" class="hover-button" @click="removeFromWatchList(index)"><i class="fa fa-minus"></i></button>
-            </div>
-        </div>
-    </section>
+  <section id="content-grid">
+    <div class="container-heading">My List:</div>
+      <div class="container">
+      <div class="box hover-button-display" v-for="item in watchListArray">
+        <img class="bg" :src="item.poster" />
+        <button type="button" class="hover-button" @click="removeFromWatchList(index)"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+  </section>
 
 <footer id="myFooter">
   <div class="social-links">
