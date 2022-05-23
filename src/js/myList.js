@@ -34,13 +34,13 @@ const Component = {
   // html template
   template: /* html */ `
     <div id="myHeader">
-      <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
+      <a href="#" class="netflix-logo"><img src="./../images/netflix.png" alt="Netflix logo"/></a>
       <ul class="navigation-list">
         <li><a href="./home.html">Home</a></li>
         <li>My List</li>
       </ul>
       <div class="dropdown">
-        <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+        <button class="pfp-button"><img src="./../images/pfp.png" alt="profile picture" class="pfp"></button>
         <div class="dropdown-content">
           <p>{{ username }}</p>
           <p @click="logout">Log out</p>

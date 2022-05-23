@@ -70,7 +70,7 @@ const Component = {
   // html template
   template: /* html */ `
     <header id="myHeader">
-      <a href="#" class="netflix-logo"><img src="/src/images/netflix.png" alt="Netflix logo"/></a>
+      <a href="#" class="netflix-logo"><img src="./../images/netflix.png" alt="Netflix logo"/></a>
       <ul class="navigation-list">
         <li>Home</li>
         <li><a href="./my-list.html">My List</a></li>
@@ -82,7 +82,7 @@ const Component = {
           <i class="fa fa-search"></i>
         </div>
         <div class="dropdown">
-          <button class="pfp-button"><img src="/src/images/pfp.png" alt="profile picture" class="pfp"></button>
+          <button class="pfp-button"><img src="./../images/pfp.png" alt="profile picture" class="pfp"></button>
           <div class="dropdown-content">
             <p>{{ username }}</p>
             <p @click="logout">Log out</p>

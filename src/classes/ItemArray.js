@@ -12,9 +12,9 @@ export let ItemArray = [
     "Following the events of Avengers: Endgame, Thor attempts to find inner peace, but must return to action and recruit Valkyrie, Korg, and Jane Foster who has become the Mighty Thor to stop Gorr the God Butcher from eliminating all gods.",
     "08-07-2022",
     true,
-    "/src/images/thor-love-and-thunder.png",
+    "./../images/thor-love-and-thunder.png",
     "https://www.youtube.com/watch?v=tgB1wUcmbbw",
-    "/src/videos/thor-love-and-thunder.mp4"
+    "./../videos/thor-love-and-thunder.mp4"
   ),
   new Item(
     "s_OBK_ns_2022",
@@ -25,9 +25,9 @@ export let ItemArray = [
     "The Jedi Master contends with the consequences of his greatest defeat the downfall and corruption of his one-time friend and apprentice, Anakin Skywalker, who turned to the dark side as evil Sith Lord Darth Vader.",
     "07-05-2022",
     true,
-    "/src/images/obi-wan-kenobi.png",
+    "./../images/obi-wan-kenobi.png",
     "https://www.youtube.com/watch?v=TWTfhyvzTx0",
-    "/src/videos/obi-wan-kenobi.mp4"
+    "./../videos/obi-wan-kenobi.mp4"
   ),
   new Item(
     "m_JWD_nm_2022",
@@ -38,9 +38,9 @@ export let ItemArray = [
     "The future of mankind hangs in the balance as humans and dinosaurs coexist following the destruction of Isla Nublar.",
     "10-06-2022",
     true,
-    "/src/images/jurassic-world-dominion.png",
+    "./../images/jurassic-world-dominion.png",
     "https://www.youtube.com/watch?v=fb5ELWi-ekk",
-    "/src/videos/jurassic-world-dominion.mp4"
+    "./../videos/jurassic-world-dominion.mp4"
   ),
   new Item(
     "s_HOTD_ns_2022",
@@ -51,9 +51,9 @@ export let ItemArray = [
     "Set two hundred years before the events of Game of Thrones, the series chronicles the beginning of the end of House Targaryen, the events leading up to the Targaryen civil war, known as the 'Dance of the Dragons', and the war itself.",
     "21-08-2022",
     true,
-    "/src/images/house-of-the-dragon.png",
+    "./../images/house-of-the-dragon.png",
     "https://www.youtube.com/watch?v=fNwwt25mheo",
-    "/src/videos/house-of-the-dragon.mp4"
+    "./../videos/house-of-the-dragon.mp4"
   ),
 
   // action

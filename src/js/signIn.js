@@ -27,7 +27,7 @@ class User {
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   SignedInUser(inputUsername.value, inputPassword.value);
-  window.location.href = "/src/pages/home.html";
+  window.location.href = "./src/pages/home.html";
 });
 
 // getting and saving form inputs
